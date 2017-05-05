@@ -1,0 +1,87 @@
+package scopeSample;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class ScopeSetServlet
+ */
+@WebServlet("/ScopeSetServlet")
+public class ScopeSetServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ScopeSetServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+//		doGet(request, response);
+		
+		//getAttribute(リクエストからセッションとサーブレットコンテキストを抽出)
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		ServletContext con = request.getServletContext();
+		
+		//アクセス数を抽出
+		String actualRequest = (String) request.getAttribute("access_request");
+		String actualSession = (String) session.getAttribute("access_session");
+		String actualApplication = (String) con.getAttribute("access_application");
+		
+		int requestNum = 1;
+		int sessionNum=1;
+		int applicationNum=1;
+		
+		//アクセス数を計算する
+		if(actualRequest!=null){
+			requestNum = Integer.parseInt(actualRequest) + 1;
+		}
+		if(actualSession!=null){
+			sessionNum = Integer.parseInt(actualSession) + 1;
+		}else{
+			// アクセス回数が取得できなかった場合ははじめてのリクエストをみなす
+			// セッションの有効時間を1分（60秒）に設定
+			session.setMaxInactiveInterval(60);;
+		}
+		if(actualApplication!=null){
+			applicationNum = Integer.parseInt(actualApplication) + 1;
+		}
+		
+		//setAttribute(다시 원래 애들한테 세팅함)
+		request.setAttribute("access_request", Integer.toString(requestNum));
+		session.setAttribute("access_session", Integer.toString(sessionNum));
+		con.setAttribute("access_application", Integer.toString(applicationNum));
+		
+		String name = request.getParameter("name_request");
+		session.setAttribute("name_session", name);
+		//forward
+		
+		RequestDispatcher rd = con.getRequestDispatcher("/ScopeSample/scopeResult.jsp");
+		rd.forward(request, response);
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- Scope(アクセス回数)を表示 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Show different scope values</title>
+</head>
+<body>
+	<p>アクセス数</p>
+	<!-- ScopeSetServletでsetAttributeしたものをgetする -->
+	<p><%=session.getAttribute("name_session") %>さんのアクセス回数は</p>
+	<p>リクエスト：<%=request.getAttribute("access_request") %>回</p>
+	<p>セッション：<%=session.getAttribute("access_session") %>回</p>
+	<p>アプリケーション：<%=application.getAttribute("access_application") %>回</p>
+	<input type="button" onclick="location.href='./ScopeSample/scope.jsp'" value="戻る">
+</body>
+</html>

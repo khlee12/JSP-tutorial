@@ -1,0 +1,10 @@
+package beansSample;
+
+public class BeansIdProcessing {
+	BeansIdProcessing(){}
+	
+	public UserBean2 getUserData(String id){
+		UserBean2 = new UserBean2();
+		
+	}
+}

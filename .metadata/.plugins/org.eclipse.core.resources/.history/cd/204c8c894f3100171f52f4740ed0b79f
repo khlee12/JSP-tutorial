@@ -1,0 +1,11 @@
+package beansSample;
+
+public class BeansIdProcessing {
+	BeansIdProcessing(){}
+	
+	public UserBean2 getUserData(String id){
+		UserBean2 bean = new UserBean2();
+		if(id=="")
+		return bean;
+	}
+}

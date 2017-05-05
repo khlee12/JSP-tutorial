@@ -1,0 +1,9 @@
+package beansSample;
+
+public class UserBean2 {
+
+	private String id;
+	private String name;
+	private int age;
+	private int auth;
+}

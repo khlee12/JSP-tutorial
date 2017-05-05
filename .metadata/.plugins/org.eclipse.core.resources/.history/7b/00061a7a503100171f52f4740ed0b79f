@@ -1,0 +1,24 @@
+package beansSample;
+
+public class BeansIdProcessing {
+	BeansIdProcessing(){}
+	
+	public UserBean2 getUserData(String id){
+		UserBean2 bean = new UserBean2();
+		if(id.equals("web01")){
+			bean.setId("web01");
+			bean.setName("ビン太郎");
+			bean.setAge(18);
+			bean.setAuth(1);
+			System.out.println("We are here")
+		}else if(id.equals("web02")){
+			bean.setId("web02");
+			bean.setName("ビン二郎");
+			bean.setAge(15);
+			bean.setAuth(0);
+		}else{
+			bean=null;
+		}
+		return bean;
+	}
+}

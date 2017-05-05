@@ -1,0 +1,92 @@
+package scopeSample;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Java入門 スコープセットクラス.<br>
+ */
+@WebServlet("/ScopeSetServlet")
+public class ScopeSetServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+       
+    public ScopeSetServlet() {
+        super();
+    }
+
+    /**
+     * POSTメソッドでリクエストされた場合の処理.
+     */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		// 各スコープからアクセス回数を取得
+		// リクエストスコープからアクセス回数を取得し、String型に変換
+		String aRequest = (String)request.getAttribute("access_request");
+		
+		// セッションスコープを取得
+		// セッション情報の文字化け対策
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		// セッションスコープからアクセス回数を取得し、String型に変換
+		String aSession = (String)session.getAttribute("access_session");
+		
+		// アプリケーションスコープを取得
+		ServletContext con  = request.getServletContext();
+		// アプリケーションスコープ（サーブレットコンテキスト）からアクセス回数を取得し、String型に変換
+		String aApplication = (String)con.getAttribute("access_application");
+		
+		int accessRequest = 1;		// リクエストスコープ用アクセス回数カウンタ
+		int accessSession = 1;		// セッションスコープ用アクセス回数カウンタ
+		int accessApplication = 1;	// アプリケーションスコープ用アクセス回数カウンタ
+		
+		// 各スコープのアクセス回数をint型に変換
+		if(aRequest != null) {
+			// リクエストスコープからアクセス回数が取得できている場合はint型に変換
+			accessRequest = Integer.parseInt(aRequest);
+			// アクセス回数を更新
+			accessRequest++; 
+		}
+		
+		if(aSession != null) {
+			// セッションスコープからアクセス回数が取得できている場合はint型に変換
+			accessSession = Integer.parseInt(aSession);
+			// アクセス回数を更新
+			accessSession++;
+		} else {
+			// アクセス回数が取得できなかった場合ははじめてのリクエストをみなす
+			// セッションの有効時間を1分（60秒）に設定
+			session.setMaxInactiveInterval(60);
+		}
+		
+		if(aApplication != null) {
+			// アプリケーションスコープからアクセス回数が取得できている場合はint型に変換
+			accessApplication = Integer.parseInt((String)aApplication);
+			// アクセス回数を更新
+			accessApplication++;
+		}
+
+		// 画面移動（フォワード）の準備
+		// セッションにユーザ名を格納
+		String nSession = request.getParameter("name_request");
+		session.setAttribute("name_session", nSession);
+
+		// 各スコープにカウンタを格納
+		request.setAttribute("access_request", Integer.toString(accessRequest));
+		session.setAttribute("access_session", Integer.toString(accessSession));
+		con.setAttribute("access_application", Integer.toString(accessApplication));
+
+		// 画面移動
+		RequestDispatcher rd = con.getRequestDispatcher("/ScopeSample/scopeResult.jsp");
+		rd.forward(request, response);
+	}
+}

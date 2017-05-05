@@ -1,0 +1,9 @@
+package beansSample;
+
+public class BeansIdProcessing {
+	BeansIdProcessing(){
+		
+	}
+	
+	
+}
