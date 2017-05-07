@@ -1,0 +1,1 @@
+create table sample.user(id char(5) not null primary key, pass varchar(10), name varchar(29), age int)

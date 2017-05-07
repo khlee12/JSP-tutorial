@@ -1,0 +1,16 @@
+package accessDBSample;
+
+/**
+ * Java入門 データベース接続クラス（DAO）.
+ * Run as -> Java Application
+ */
+/*
+(1) データベースに接続
+(2) SQL文を実行
+(3) SQL実行結果を確認する	
+(4) クローズ処理を行う
+*/
+
+public class SampleDao {
+	public sta
+}

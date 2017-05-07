@@ -1,0 +1,1 @@
+insert into sample.user values('web02', 'password', 'schoo2', 15)

@@ -1,0 +1,1 @@
+update sample.user set name='schoo' where age=17

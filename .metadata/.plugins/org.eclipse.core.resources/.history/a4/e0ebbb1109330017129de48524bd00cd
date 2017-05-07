@@ -1,0 +1,15 @@
+package accessDBSample;
+
+import java.sql.Connection;
+
+/*
+ * データベース接続クラス
+ */
+
+public class DbConnect {
+	public static void main(String[] args){
+		Connection con = null;
+		
+		
+	}
+}

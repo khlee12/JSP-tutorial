@@ -1,0 +1,9 @@
+package accessDBSample;
+
+/*
+ * データベース接続クラス
+ */
+
+public class DbConnect {
+
+}

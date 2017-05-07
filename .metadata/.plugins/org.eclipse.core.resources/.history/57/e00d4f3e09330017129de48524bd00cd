@@ -1,0 +1,28 @@
+package accessDBSample;
+
+import java.sql.Connection;
+
+/*
+ * データベース接続クラス
+ */
+
+public class DbConnect {
+	public static void main(String[] args){
+		Connection con = null;
+		
+		try{
+			//JDBCドライバのロード
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			//データベースと接続
+			
+			
+		}catch{
+			
+		}catch{
+			
+		}finally{
+			
+		}
+	}
+}

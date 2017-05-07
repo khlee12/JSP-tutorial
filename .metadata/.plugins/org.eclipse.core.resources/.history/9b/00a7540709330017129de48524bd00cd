@@ -1,0 +1,11 @@
+package accessDBSample;
+
+/*
+ * データベース接続クラス
+ */
+
+public class DbConnect {
+	public static void main(String[] args){
+		
+	}
+}

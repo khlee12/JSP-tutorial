@@ -1,0 +1,31 @@
+package accessDBSample;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+/*
+ * データベース接続クラス
+ */
+
+public class DbConnect {
+	public static void main(String[] args){
+		Connection con = null;
+		
+		try{
+			//JDBCドライバのロード
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			//データベースと接続
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample",
+					"root",
+					"db4editor");
+			
+		}catch(){
+			
+		}catch(){
+			
+		}finally{
+			
+		}
+	}
+}

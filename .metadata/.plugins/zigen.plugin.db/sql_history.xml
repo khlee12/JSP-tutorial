@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_91" class="java.beans.XMLDecoder">
+ <object class="zigen.plugin.db.core.SQLHistory">
+  <void property="config">
+   <object class="zigen.plugin.db.core.DBConfig">
+    <void property="charset">
+     <string></string>
+    </void>
+    <void property="classPaths">
+     <array class="java.lang.String" length="1">
+      <void index="0">
+       <string>/Users/khlee/Documents/TOOLS/javaEE eclipse/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar</string>
+      </void>
+     </array>
+    </void>
+    <void property="convertUnicode">
+     <boolean>true</boolean>
+    </void>
+    <void property="databaseProductVersion">
+     <string>5.7.14</string>
+    </void>
+    <void property="dbName">
+     <string>schooDB</string>
+    </void>
+    <void property="dbType">
+     <int>2</int>
+    </void>
+    <void property="driverName">
+     <string>com.mysql.jdbc.Driver</string>
+    </void>
+    <void property="driverVersion">
+     <string>mysql-connector-java-5.1.42 ( Revision: 1f61b0b0270d9844b006572ba4e77f19c0f230d4 )</string>
+    </void>
+    <void property="filterPattern">
+     <string></string>
+    </void>
+    <void property="noLockMode">
+     <boolean>true</boolean>
+    </void>
+    <void property="password">
+     <string>db4editor</string>
+    </void>
+    <void property="schema">
+     <string></string>
+    </void>
+    <void property="url">
+     <string>jdbc:mysql://localhost:3306/</string>
+    </void>
+    <void property="userId">
+     <string>root</string>
+    </void>
+   </object>
+  </void>
+  <void property="date">
+   <object class="java.util.Date">
+    <long>1494151884315</long>
+   </object>
+  </void>
+  <void property="fileMode">
+   <boolean>true</boolean>
+  </void>
+  <void property="sql">
+   <string>insert into sample.user values(&apos;web02&apos;, &apos;password&apos;, &apos;schoo2&apos;, 15)</string>
+  </void>
+ </object>
+</java>
